@@ -1,37 +1,29 @@
 "use client";
 import { Button, CommonInput, Error } from "@/src/Components/Common";
 import useAuth from "@/src/Hooks/useAuth";
-import useLoginAndSignUp from "@/src/Hooks/useLoginAndSignUp";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginUser, errorMessage } = useAuth();
-  //   const { loginUser } = useLoginAndSignUp();
+  const router = useRouter();
+  const { loginUser, errorMessage, accessToken } = useAuth();
 
-  // const [login, { isSuccess, isError, error, data }] = useLoginMutation();
-  // const fullToken = localStorage.getItem("accessToken");
-  //   const { data: profile } = useGetProfileQuery(fullToken);
+  //   const fullToken = localStorage.getItem("accessToken");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // await login({
-    //   data: {
-    //     email,
-    //     password,
-    //   },
-    // });
     loginUser(email, password);
-    console.log("lfsdjk");
   };
-  //   useEffect(() => {
-  //     if (isSuccess) {
-  //       localStorage.setItem("accessToken", loginResponse.data.accessToken);
-  //       navigate("/");
-  //     }
-  //   }, [loginResponse, isSuccess, navigate]);
+
+  useEffect(() => {
+    if (accessToken) {
+      localStorage.setItem("accessToken", accessToken);
+      router.push("/");
+    }
+  }, [accessToken, router]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-md w-full bg-white p-8 shadow-md">
