@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginUser, accessToken, errorMessage } = useAuth();
+  const { loginUser, errorMessage } = useAuth();
   //   const { loginUser } = useLoginAndSignUp();
 
   // const [login, { isSuccess, isError, error, data }] = useLoginMutation();
