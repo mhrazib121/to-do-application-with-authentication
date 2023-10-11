@@ -8,10 +8,6 @@ const Todos = () => {
   const { getTodoList, todoList } = useTodo();
   const { profile } = useProfile();
 
-  console.log(todoList);
-
-  console.log(profile?.email);
-
   useEffect(() => {
     if (profile?.email) {
       getTodoList(profile.email);

@@ -11,8 +11,6 @@ const Login = () => {
   const router = useRouter();
   const { loginUser, errorMessage, accessToken, getProfile } = useAuth();
 
-  const fullToken = localStorage.getItem("accessToken");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     loginUser(email, password);

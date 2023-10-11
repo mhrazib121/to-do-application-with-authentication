@@ -19,10 +19,8 @@ const useLoginAndSignUp = () => {
     const result = await response.json();
     if (result.data) {
       setAccessToken(result.data.accessToken);
-      console.log(accessToken);
     } else {
       setErrorMessage(result.message);
-      console.log("object");
     }
   };
 
@@ -50,7 +48,6 @@ const useLoginAndSignUp = () => {
       },
     });
     const result = await response.json();
-    // console.log(result);
     if (result.data) {
       setProfile(result.data);
     }

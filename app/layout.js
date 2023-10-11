@@ -14,9 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <TodoProvider>{children}</TodoProvider>
-        </AuthProvider>
+        <div className="bg-blue-100 py-16 min-h-[150vh]">
+          <AuthProvider>
+            <TodoProvider>{children}</TodoProvider>
+          </AuthProvider>
+        </div>
       </body>
     </html>
   );

@@ -12,8 +12,6 @@ const Header = () => {
   const { profile } = useProfile();
   const { createTodo, todoCreateRes } = useTodo();
 
-  console.log(todoCreateRes, "res");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     createTodo({

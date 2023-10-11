@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import useAuth from "./useAuth";
 
 const useProfile = () => {
-  const token = localStorage.getItem("accessToken");
+  let token;
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("accessToken");
+  }
   const { getProfile, profile } = useAuth();
 
   useEffect(() => {
