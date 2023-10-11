@@ -26,7 +26,7 @@ const StatisticsChat = () => {
     datasets: [
       {
         label: "Task",
-        data: [completedTask?.length, inCompletedTask?.length],
+        data: [completedTask?.length || 0, inCompletedTask?.length || 1],
         backgroundColor: [
           "rgb(54, 162, 235)",
           "rgb(255, 99, 132)",

@@ -1,14 +1,14 @@
 "use client";
-import { useEffect } from "react";
+import { useMemo } from "react";
+import useProfile from "../Hooks/useProfile";
 import useTodo from "../Hooks/useTodo";
 import Todo from "./Todo";
-import useProfile from "../Hooks/useProfile";
 
 const Todos = () => {
   const { getTodoList, todoList } = useTodo();
   const { profile } = useProfile();
 
-  useEffect(() => {
+  useMemo(() => {
     if (profile?.email) {
       getTodoList(profile.email);
     }
