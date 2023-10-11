@@ -9,13 +9,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const { loginUser, errorMessage, accessToken } = useAuth();
+  const { loginUser, errorMessage, accessToken, getProfile } = useAuth();
 
-  //   const fullToken = localStorage.getItem("accessToken");
+  const fullToken = localStorage.getItem("accessToken");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     loginUser(email, password);
+    // getProfile(token);
   };
 
   useEffect(() => {

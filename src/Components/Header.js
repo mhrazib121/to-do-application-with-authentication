@@ -1,22 +1,49 @@
+"use client";
 import { doubleTic, notes, plus } from "@/public/images";
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import useTodo from "../Hooks/useTodo";
+import useProfile from "../Hooks/useProfile";
 
 const Header = () => {
+  const [taskTitle, setTaskTitle] = useState();
+  const [deadline, setDeadline] = useState();
+  const { profile } = useProfile();
+  const { createTodo, todoCreateRes } = useTodo();
+
+  console.log(todoCreateRes, "res");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createTodo({
+      email: profile.email,
+      todos: {
+        title: taskTitle,
+        deadline: deadline,
+        isCompleted: false,
+      },
+    });
+  };
+
   return (
     <div>
-      <form className="flex items-center bg-gray-100 px-4 py-4 rounded-md">
+      <form className="flex gap-2 items-center " onSubmit={handleSubmit}>
         <Image src={notes} className="w-6 h-6" alt="Add todo" />
         <input
           type="text"
           placeholder="Type your todo"
-          className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
+          className="w-full bg-gray-100 px-4 py-4 rounded-md text-lg  border-none outline-none  text-gray-500"
+          onChange={(e) => setTaskTitle(e.target.value)}
         />
-        <button
-          type="submit"
-          className={`appearance-none w-8 h-8 bg-no-repeat bg-contain`}
-        >
-          Add
+        <input
+          type="date"
+          placeholder="Type your todo"
+          className="w-full bg-gray-100 px-4 py-4 rounded-md text-lg  border-none outline-none  text-gray-500"
+          onChange={(e) => setDeadline(e.target.value)}
+        />
+        <button className="appearance-none cursor-pointer" type="submit">
+          <Image className="w-14 h-8  " src={plus} alt="" />
         </button>
       </form>
 
