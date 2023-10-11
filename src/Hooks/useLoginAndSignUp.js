@@ -50,7 +50,7 @@ const useLoginAndSignUp = () => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     if (result.data) {
       setProfile(result.data);
     }
