@@ -35,8 +35,9 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-md w-full bg-white p-8 shadow-md">
         {errorMessage ? <Error message={errorMessage} /> : null}
-        <div className="mb-6 flex flex-col items-center">
+        <div className="mb-6 flex flex-col items-center text-black">
           {/* <Logo /> */}
+          Simple Todo Application
           <h2 className="mt-4 text-3xl text-center font-bold">Login</h2>
         </div>
         <form onSubmit={handleSubmit}>
