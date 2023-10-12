@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const { useState } = require("react");
 const { BASE_URL } = require("../Constants/common");
 
@@ -17,7 +19,8 @@ const useTodoApi = () => {
     const result = await response.json();
     if (result.statusCode === 200) {
       setTodoCreateRes(result);
-      getTodoList(email);
+      await getTodoList(email);
+      toast.success("Task added successfully");
     }
   };
 
@@ -42,6 +45,7 @@ const useTodoApi = () => {
     if (result.statusCode === 200) {
       setTodoUpdateRes(result.data);
       await getTodoList(email);
+      toast.success("Todo status updated");
     }
   };
 

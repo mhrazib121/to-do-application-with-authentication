@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BASE_URL } from "../Constants/common";
+import { toast } from "react-toastify";
 
 const useLoginAndSignUp = () => {
   const [accessToken, setAccessToken] = useState();
@@ -35,8 +36,10 @@ const useLoginAndSignUp = () => {
     const result = await response.json();
     if (result?.data?.email) {
       setSignUpData(result);
+      toast.success("User registered successfully");
     } else {
       setErrorMessage("User did not created");
+      toast.error(result.message);
     }
   };
 

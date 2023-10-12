@@ -36,7 +36,7 @@ const Header = () => {
         />
         <input
           type="date"
-          placeholder="Type your todo"
+          placeholder="Set your deadline"
           className="w-full bg-gray-100 px-4 py-4 rounded-md text-lg  border-none outline-none  text-gray-500"
           onChange={(e) => setDeadline(e.target.value)}
         />
@@ -45,13 +45,13 @@ const Header = () => {
         </button>
       </form>
 
-      <ul className="flex justify-between my-4 text-xs text-gray-500">
+      {/* <ul className="flex justify-between my-4 text-xs text-gray-500">
         <li className="flex space-x-1 cursor-pointer">
           <Image className="w-4 h-4" src={doubleTic} alt="Complete" />
           <span>Complete All Tasks</span>
         </li>
         <li className="cursor-pointer">Clear completed</li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

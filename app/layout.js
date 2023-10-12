@@ -1,8 +1,9 @@
 import AuthProvider from "@/src/Context/AuthProvider";
-import PrivateRoute from "@/src/Context/PrivateRoute";
 import TodoProvider from "@/src/Context/TodoProvider";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,22 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-blue-100 py-16 min-h-[150vh]">
+        <div className="">
           <AuthProvider>
             <TodoProvider>
-              <PrivateRoute>{children}</PrivateRoute>
+              <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
+              {children}
             </TodoProvider>
           </AuthProvider>
         </div>

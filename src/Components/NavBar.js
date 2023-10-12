@@ -9,7 +9,7 @@ const NavBar = () => {
       <div className="flex justify-between container items-center">
         <p>Simple Todo Application with Redux</p>
         {profile?.email ? (
-          <Link
+          <button
             onClick={() => {
               localStorage.removeItem("accessToken");
               location.reload();
@@ -17,7 +17,7 @@ const NavBar = () => {
             href=""
           >
             Logout
-          </Link>
+          </button>
         ) : (
           <Link href="/login">Login</Link>
         )}

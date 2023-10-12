@@ -3,20 +3,32 @@ import { Button, CommonInput } from "@/src/Components/Common";
 import useAuth from "@/src/Hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lastName, setLastName] = useState("");
   const [firstName, setFirstName] = useState("");
-  const { signUpUser } = useAuth();
+  const { signUpUser, signUpData } = useAuth();
   const router = useRouter();
+
+  const resetFrom = () => {
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+    setPassword("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     signUpUser(email, password, { firstName, lastName });
-
-    router.push("/login");
+    resetFrom();
+    if (signUpData.successCode === 200) {
+      router.push("/login");
+    } else {
+      toast.error("Something was wrong");
+    }
   };
 
   return (

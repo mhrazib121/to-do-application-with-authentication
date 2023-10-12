@@ -3,24 +3,32 @@ import { Button, CommonInput, Error } from "@/src/Components/Common";
 import useAuth from "@/src/Hooks/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const { loginUser, errorMessage, accessToken, getProfile } = useAuth();
+  const { loginUser, errorMessage, accessToken } = useAuth();
+
+  const resetFrom = () => {
+    setEmail("");
+    setFirstName("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     loginUser(email, password);
-    // getProfile(token);
+    resetFrom();
+    location.reload();
   };
 
   useEffect(() => {
     if (accessToken) {
       localStorage.setItem("accessToken", accessToken);
       router.push("/");
+      toast.success("User login successfully");
     }
   }, [accessToken, router]);
   return (
