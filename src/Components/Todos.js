@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import useProfile from "../Hooks/useProfile";
 import useTodo from "../Hooks/useTodo";
 import Todo from "./Todo";
+import { Error } from "./Common";
 
 const Todos = () => {
   const { getTodoList, todoList } = useTodo();
@@ -16,9 +17,11 @@ const Todos = () => {
 
   return (
     <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
-      {todoList?.map((todo, i) => (
-        <Todo key={i} todo={todo} />
-      ))}
+      {todoList?.length > 0 ? (
+        todoList?.map((todo, i) => <Todo key={i} todo={todo} />)
+      ) : (
+        <Error message="You did not add any task yet" />
+      )}
     </div>
   );
 };

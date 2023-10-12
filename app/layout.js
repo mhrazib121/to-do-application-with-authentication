@@ -1,4 +1,5 @@
 import AuthProvider from "@/src/Context/AuthProvider";
+import PrivateRoute from "@/src/Context/PrivateRoute";
 import TodoProvider from "@/src/Context/TodoProvider";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="bg-blue-100 py-16 min-h-[150vh]">
           <AuthProvider>
-            <TodoProvider>{children}</TodoProvider>
+            <TodoProvider>
+              <PrivateRoute>{children}</PrivateRoute>
+            </TodoProvider>
           </AuthProvider>
         </div>
       </body>

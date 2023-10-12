@@ -54,10 +54,10 @@ const Login = () => {
           </div>
         </form>
         <Link
-          href="/register"
-          className="text-sm flex gap-2 justify-center mb-6"
+          href="/sign-up"
+          className="text-sm text-black flex gap-2 justify-center mb-6"
         >
-          Don`&apos;`t have an account?
+          Don&apos;t have an account?
           <span className="text-blue-500 hover:text-blue-800"> Register</span>
         </Link>
         <div className="flex justify-between">

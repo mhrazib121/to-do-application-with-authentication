@@ -53,6 +53,10 @@ const useLoginAndSignUp = () => {
     }
   };
 
+  const signOut = () => {
+    const romovedAcessToken = localStorage.removeItem("accessToken");
+  };
+
   return {
     accessToken,
     errorMessage,
